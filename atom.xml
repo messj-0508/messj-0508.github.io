@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-08T04:30:36.131Z</updated>
+  <updated>2019-01-31T06:26:11.656Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git 撤销合并操作</title>
+    <link href="http://yoursite.com/2019/01/31/Git%E6%92%A4%E9%94%80%E5%90%88%E5%B9%B6%E6%93%8D%E4%BD%9C/"/>
+    <id>http://yoursite.com/2019/01/31/Git撤销合并操作/</id>
+    <published>2019-01-31T05:01:23.000Z</published>
+    <updated>2019-01-31T06:26:11.656Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>利用Merge操作合并分支时，可能会出现一些错误，需要撤销合并。这里介绍如何撤销已经上传至github远程仓库的方法</strong></p><p>当你使用 git merge 合并两个分支，你将会得到一个commit。执行 git show 之后，会有类似的输出：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">commit 19b7d40d2ebefb4236a8ab630f89e4afca6e9dbe</span><br><span class="line">Merge: b0ef24a cca45f9</span><br><span class="line">......</span><br></pre></td></tr></table></figure><p>其中，Merge 这一行代表的是合并所用到的两个分支(parents)。举个例子，通常，我们的稳定代码都在 master 分支，而开发过程使用 dev 分支，当开发完成后，再把 dev 分支 merge 进 master 分支：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a -&gt; b -&gt; c -&gt; f -- g -&gt; h (master)</span><br><span class="line">           \      /</span><br><span class="line">            d -&gt; e  (dev)</span><br></pre></td></tr></table></figure><p>g 是 merge 后得到的代码，g 的两个 parent 分别是 f 和 e。</p><p>当你撤销合并，需要添加-m参数来指定撤销合并至哪条分支(parent)。<br>在你合并两个分支并试图撤销时，Git 并不知道你到底需要保留哪一个分支上所做的修改。从 Git 的角度来看，master 分支和 dev 在地位上是完全平等的，只是在 workflow 中，master 被人为约定成了「主分支」。</p><p>于是 Git 需要你通过 m 或 mainline 参数来指定「主线」。merge commit 的 parents 一定是在两个不同的线索上，因此可以通过 parent 来表示「主线」。m 参数的值可以是 1 或者 2，对应着 parent 在 merge commit 信息中的顺序。<br>因而，撤销g的合并操作恢复至原主分支f上：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># g为merge后的索引号</span></span><br><span class="line">git revert -m 1 g</span><br></pre></td></tr></table></figure></p><p>从而变成：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a -&gt; b -&gt; c -&gt; f -- g -&gt; h -&gt; G -&gt; i (master)</span><br><span class="line">           \      /</span><br><span class="line">            d -&gt; e -&gt; j -&gt; k (dev)</span><br></pre></td></tr></table></figure></p><p>此外，由于撤销操作，则在下一次dev与master合并时，merge操作不会合并d、e两个版本代码。因为git认为已经合并或没有合并的需要。此刻，由于新的要合并的dev是在原有d、e版本上开发的（此刻dev已修复bug），这样合并会出错。</p><p>因而，需要先撤销G再合并，G为先前撤销合并恢复至主分支操作生成的编号。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git revert G</span><br><span class="line">git merge dev</span><br></pre></td></tr></table></figure></p><p>参考：<a href="https://blog.csdn.net/sndamhming/article/details/56011986" target="_blank" rel="noopener">https://blog.csdn.net/sndamhming/article/details/56011986</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;利用Merge操作合并分支时，可能会出现一些错误，需要撤销合并。这里介绍如何撤销已经上传至github远程仓库的方法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当你使用 git merge 合并两个分支，你将会得到一个commit。执行 git show 之后，会有类
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>caffe-yolo summary</title>
@@ -63,27 +87,6 @@
     
     
       <category term="caffe" scheme="http://yoursite.com/tags/caffe/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2018/12/26/hello-world/"/>
-    <id>http://yoursite.com/2018/12/26/hello-world/</id>
-    <published>2018-12-26T12:27:05.903Z</published>
-    <updated>2018-12-27T17:13:59.355Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
     
   </entry>
   
