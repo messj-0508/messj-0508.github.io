@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-18T18:59:17.517Z</updated>
+  <updated>2019-04-18T19:23:34.086Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>提醒事项</title>
+    <link href="http://yoursite.com/2019/04/19/%E6%8F%90%E9%86%92%E4%BA%8B%E9%A1%B9/"/>
+    <id>http://yoursite.com/2019/04/19/提醒事项/</id>
+    <published>2019-04-18T19:09:46.000Z</published>
+    <updated>2019-04-18T19:23:34.086Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="每日任务"><a href="#每日任务" class="headerlink" title="每日任务"></a>每日任务</h1><table><thead><tr><th style="text-align:center">项目</th><th style="text-align:center">优先级</th><th style="text-align:center">坚持天数</th></tr></thead><tbody><tr><td style="text-align:center">背单词</td><td style="text-align:center">1</td><td style="text-align:center">100天</td></tr><tr><td style="text-align:center">跑步</td><td style="text-align:center">2</td><td style="text-align:center">50天</td></tr></tbody></table><h1 id="未竟事业记录表"><a href="#未竟事业记录表" class="headerlink" title="未竟事业记录表"></a>未竟事业记录表</h1><p>只记录没有完成每日任务的时候</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;每日任务&quot;&gt;&lt;a href=&quot;#每日任务&quot; class=&quot;headerlink&quot; title=&quot;每日任务&quot;&gt;&lt;/a&gt;每日任务&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;项目&lt;/th&gt;
+&lt;th st
+      
+    
+    </summary>
+    
+    
+      <category term="生活点滴" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>落星</title>

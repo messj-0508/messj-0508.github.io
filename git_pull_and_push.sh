@@ -4,6 +4,10 @@ then
 	echo "执行git pull"
     git pull
 else
+	echo "执行hexo generate"
+    hexo g
+        echo "执行hexo deploy"
+    hexo d
 	echo "执行git add ."
     git add .
 	echo "执行git commit -m ${msg}"
