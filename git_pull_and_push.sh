@@ -1,10 +1,9 @@
 msg=$1  # $1为第一个参数
-if  test $msg -eq 
+if  test $msg -eq "pull"
 then
 	echo "执行git pull"
     git pull
 else
-    hexo clean
 	echo "执行hexo generate"
     hexo g
         echo "执行hexo deploy"
