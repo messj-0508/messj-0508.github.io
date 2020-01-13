@@ -4,6 +4,7 @@ then
 	echo "执行git pull"
     git pull
 else
+    hexo clean
 	echo "执行hexo generate"
     hexo g
         echo "执行hexo deploy"
