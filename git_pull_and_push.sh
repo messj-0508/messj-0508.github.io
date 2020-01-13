@@ -1,5 +1,5 @@
 msg=$1  # $1为第一个参数
-if  test $msg -eq "pull"
+if  test $msg -eq pull
 then
 	echo "执行git pull"
     git pull
