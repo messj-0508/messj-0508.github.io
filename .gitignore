@@ -1,2 +1,7 @@
 /node_modules
-/.deploy_git
+/public
+/.deploy*
+.DS_Store
+Thumbs.db
+db.json
+*.log
