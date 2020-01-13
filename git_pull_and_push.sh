@@ -7,8 +7,9 @@ elif [ $msg = update ];then
 	echo "执行git add ."
     git add .
 	echo "执行git commit -m ${msg}"
-    git commit -m"${msg}"
+    git commit -m "${msg}"
 	echo "执行git push"
+    git push
 else
 	echo "执行hexo generate"
     hexo g
