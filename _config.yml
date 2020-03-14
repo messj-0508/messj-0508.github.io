@@ -105,3 +105,7 @@ jsonContent:
     excerpt: false
     categories: false
     tags: true
+
+# 文章加密
+encrypt:
+    enable: true
