@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-01-22T06:00:30.736Z</updated>
+  <updated>2021-01-22T06:56:32.849Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>毕业去向</title>
+    <link href="http://yoursite.com/2021/01/22/%E6%AF%95%E4%B8%9A%E5%8E%BB%E5%90%91/"/>
+    <id>http://yoursite.com/2021/01/22/毕业去向/</id>
+    <published>2021-01-22T06:54:06.000Z</published>
+    <updated>2021-01-22T06:56:32.849Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>经过长达半年的学习，最终考公上岸，可喜</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;经过长达半年的学习，最终考公上岸，可喜&lt;/strong&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="成就" scheme="http://yoursite.com/tags/%E6%88%90%E5%B0%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>佛说七苦</title>
